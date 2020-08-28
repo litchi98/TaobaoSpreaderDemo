@@ -19,7 +19,7 @@ public class SlideMenuLayout extends ViewGroup {
     private View delete;
     private int firstChildLeft;
     private View firstChild;
-    private int actionX;
+    private float actionX;
 
     private Scroller scroller;
     private boolean isItemOpen = false;
@@ -115,15 +115,32 @@ public class SlideMenuLayout extends ViewGroup {
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         if (isItemOpen && ev.getX() > firstChild.getMeasuredWidth() - delete.getMeasuredWidth()) {
+            LogUtils.d(TAG, "case 1...");
             return false;
-        } else return isItemOpen || ev.getAction() == MotionEvent.ACTION_MOVE;
+        }
+        if (isItemOpen) {
+            LogUtils.d(TAG, "case 2...");
+
+            return true;
+        }
+        if (ev.getAction() == MotionEvent.ACTION_MOVE) {
+            LogUtils.d(TAG, "case 3...");
+
+            return true;
+        }
+        if (ev.getAction() == MotionEvent.ACTION_DOWN) {
+            LogUtils.d(TAG, "case 4...");
+
+            this.actionX = ev.getX();
+        }
+        return false;
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
 //        touchEventBeta1(event);
         touchEventRelease(event);
-        return false;
+        return true;
     }
 
     @Override
@@ -142,27 +159,33 @@ public class SlideMenuLayout extends ViewGroup {
 
     private void touchEventRelease(MotionEvent event) {
         int action = event.getAction();
-        int dX = (int) (event.getX() - actionX);
+        float dX = event.getX() - actionX;
         int scrollX = getScrollX();
         switch (action) {
             case MotionEvent.ACTION_DOWN:
-                actionX = (int) event.getX();
+                LogUtils.d(TAG, "ACTION DOWN....");
+                actionX = event.getX();
                 if (isItemOpen) {
                     close();
                 }
                 break;
             case MotionEvent.ACTION_MOVE:
-                actionX = (int) event.getX();
+                getParent().requestDisallowInterceptTouchEvent(true);
+                LogUtils.d(TAG, "ACTION MOVE...");
+                actionX = event.getX();
                 if (scrollX - dX <= 0) {
                     scrollTo(0, 0);
                 } else if (scrollX - dX > menuItem.getMeasuredWidth()) {
                     scrollTo(menuItem.getMeasuredWidth(), 0);
                 } else {
-                    scrollBy(-dX, 0);
+                    scrollBy((int) -dX, 0);
                 }
                 break;
             case MotionEvent.ACTION_CANCEL:
+                LogUtils.d(TAG, "ACTION CANCEL...");
             case MotionEvent.ACTION_UP:
+                getParent().requestDisallowInterceptTouchEvent(false);
+                LogUtils.d(TAG, "ACTION UP...");
                 if (scrollX < menuItem.getMeasuredWidth() / 2) {
 //                    scrollTo(0, 0);
                     scroller.startScroll(scrollX, 0, -scrollX, 0, 500);

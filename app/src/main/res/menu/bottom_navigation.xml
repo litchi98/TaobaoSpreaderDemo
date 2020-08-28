@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/bottom_navigation_home"
+        android:icon="@mipmap/home"
+        android:title="@string/home_text"/>
+    <item android:id="@+id/bottom_navigation_classification"
+        android:icon="@mipmap/classification"
+        android:title="@string/classification_text"/>
+    <item android:id="@+id/bottom_navigation_favorites"
+        android:icon="@mipmap/favorite_normal"
+        android:title="@string/favorites_text"/>
+
+</menu>

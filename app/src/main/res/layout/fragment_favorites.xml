@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/favorites_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/pageBg"
+    android:paddingTop="20dp">
+
+    <TextView
+        android:id="@+id/favorites_num"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="10dp"
+        android:gravity="center"
+        android:text="收藏(11)"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:visibility="gone" />
+
+    <com.lcodecore.tkrefreshlayout.CusNestedScrollView
+        android:id="@+id/favorites_nested_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusableInTouchMode="true"
+        android:overScrollMode="never">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:descendantFocusability="blocksDescendants"
+            android:orientation="vertical">
+
+            <com.litchi.taobaodemo.ui.component.CusTextView
+                android:id="@+id/favorites_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:paddingEnd="0dp"
+                android:paddingTop="20dp"
+                android:text="@string/favorites_text"
+                android:textColor="@color/black"
+                android:textSize="25sp" />
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/favorites_tab_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                app:tabIndicatorColor="@color/titleNoneBg"
+                app:tabMinWidth="80dp"
+                app:tabRippleColor="@color/titleNoneBg"
+                app:tabSelectedTextColor="@color/colorPrimary"
+                app:tabTextAppearance="@style/home_tab_layout_text_style_16sp"
+                app:tabTextColor="@color/black" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/favorites_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/search_main_radius"
+                android:overScrollMode="never"
+                android:paddingStart="10dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="10dp" />
+        </LinearLayout>
+    </com.lcodecore.tkrefreshlayout.CusNestedScrollView>
+
+    <LinearLayout
+        android:id="@+id/favorites_no_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:src="@mipmap/nodata" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/favorites_no_data_tips" />
+
+        <TextView
+            android:id="@+id/favorites_go_shopping"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/goods_detail_get_coupon_btn_bg"
+            android:text="@string/go_shopping_text"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </LinearLayout>
+</RelativeLayout>

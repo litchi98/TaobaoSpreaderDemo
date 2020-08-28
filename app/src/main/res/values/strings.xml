@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">淘宝Demo</string>
+    <string name="home_text">主页</string>
+    <string name="classification_text">分类</string>
+    <string name="favorites_text">收藏</string>
+    <string name="home_search_edit_hint">手机</string>
+    <string name="item_goods_title">\u3000\u3000%1s</string>
+    <string name="item_goods_discount_text">领券立减%d元</string>
+    <string name="item_goods_original_price_text">¥%.2f</string>
+    <string name="goods_detail_original_price_text">现价¥%.2f</string>
+    <string name="item_goods_monthly_sales_text">月销%d</string>
+    <string name="goods_detail_monthly_sales_text">%d笔成交</string>
+    <string name="search_result_monthly_sales_text">%d人付款</string>
+    <string name="item_goods_monthly_sales_ten_kilo_text">月销%.1f万+</string>
+    <string name="goods_detail_monthly_sales_ten_kilo_text">%.2f万笔成交</string>
+    <string name="search_result_monthly_sales_ten_kilo_text">%.2f万人付款</string>
+    <string name="item_goods_final_price_text_format">%.2f</string>
+    <string name="rmb_char">¥</string>
+    <string name="tmall_logo">天猫</string>
+    <string name="welfare_purchase">福利购</string>
+    <string name="after_coupon">用券后</string>
+    <string name="goods_detail">—— 宝贝详情 ——</string>
+    <string name="cancel_text">取消</string>
+    <string name="search_history">历史搜索</string>
+    <string name="search_recommend">搜索发现</string>
+    <string name="find_similar_text">找相似</string>
+    <string name="favorites_no_data_tips">您还没有收藏宝贝，快去逛逛吧~</string>
+    <string name="go_shopping_text">去购物</string>
+    <string name="favorites_num_format">收藏(%d)</string>
+</resources>
